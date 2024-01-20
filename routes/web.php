@@ -9,4 +9,7 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
     Route::group(['namespace' => 'AboutUs'], function () {
         Route::get('/about-us', 'IndexController')->name('about-us.index');
     });
+    Route::group(['namespace' => 'Product'], function () {
+       Route::get('/products', 'IndexController')->name('products.index');
+    });
 });
