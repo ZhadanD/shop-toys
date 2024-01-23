@@ -1,10 +1,10 @@
 <?php
-$title = 'Каталог продукции'
+$title = 'Корзина'
 ?>
 @extends('layouts.main')
 @section('content')
     @if(count($products) == 0)
-        <h3 class="text-danger">Нет продуктов</h3>
+        <h3 class="text-danger">Корзина пуста</h3>
     @endif
 
     <div class="container">
@@ -20,14 +20,6 @@ $title = 'Каталог продукции'
                         <div class="card-body">
                             <p class="card-text">{{ $product->description  }}</p>
                         </div>
-
-                        <form action="{{ route('cart.store') }}" method="post">
-                            @csrf
-
-                            <input type="hidden" id="productId" name="productId" value="{{ $product->id }}">
-
-                            <button type="submit" class="btn btn-success">Добавить в корзину</button>
-                        </form>
                     </div>
                 </div>
             @endforeach

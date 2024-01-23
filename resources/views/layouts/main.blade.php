@@ -28,15 +28,47 @@
             </ul>
         </nav>
 
-        <nav class="col-md-3 text-end">
-            <button type="button" class="btn btn-outline-success me-2">Войти</button>
-            <button type="button" class="btn btn-success">Зарегистрироваться</button>
-        </nav>
+
+            @guest
+                <nav class="col-md-3 text-end">
+                    @if (Route::has('login'))
+                        <a class="btn btn-outline-success me-2" href="{{ route('login') }}">Войти</a>
+                    @endif
+
+                    @if (Route::has('register'))
+                            <a class="btn btn-success" href="{{ route('register') }}">Зарегистрироваться</a>
+                    @endif
+                </nav>
+            @else
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item dropdown">
+                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        {{ Auth::user()->name }}
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{{ route('cart.index')  }}">Корзина</a>
+
+                        <a class="dropdown-item" href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            Выйти
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </div>
+                </li>
+            </ul>
+            @endguest
     </header>
 
     <main class="container">
         @yield('content')
     </main>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
