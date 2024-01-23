@@ -17,6 +17,9 @@ Route::group(['namespace' => 'App\Http\Controllers'], function () {
         Route::get('/cart', 'IndexController')->name('cart.index');
         Route::post('/cart', 'StoreController')->name('cart.store');
     });
+    Route::group(['namespace' => 'Contacts'], function () {
+        Route::get('/contacts', 'IndexController')->name('contacts.index');
+    });
 });
 
 Auth::routes();

@@ -23,11 +23,10 @@
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
                 <li><a href="{{ route('main.index')  }}" class="nav-link px-2 link-success">Главная</a></li>
                 <li><a href="{{ route('products.index')  }}" class="nav-link px-2 link-success">Каталог продукции</a></li>
-                <li><a href="#" class="nav-link px-2 link-success">Контакты</a></li>
+                <li><a href="{{ route('contacts.index') }}" class="nav-link px-2 link-success">Контакты</a></li>
                 <li><a href="{{ route('about-us.index')  }}" class="nav-link px-2 link-success">О нас</a></li>
             </ul>
         </nav>
-
 
             @guest
                 <nav class="col-md-3 text-end">
@@ -43,7 +42,7 @@
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item dropdown">
                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }}
+                        Здравствуйте, {{ Auth::user()->name }}
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -67,8 +66,22 @@
     <main class="container">
         @yield('content')
     </main>
-</div>
 
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+        <p class="col-md-4 mb-0 text-body-secondary">© 2024 Детский мир</p>
+
+        <a href="/" class="col-md-4 d-flex align-items-center justify-content-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <img src="{{ asset('images/logo-shop-toys.png')  }}" alt="Логотип" width="100">
+        </a>
+
+        <ul class="nav col-md-4 justify-content-end">
+            <li><a href="{{ route('main.index')  }}" class="nav-link px-2 link-success">Главная</a></li>
+            <li><a href="{{ route('products.index')  }}" class="nav-link px-2 link-success">Каталог продукции</a></li>
+            <li><a href="{{ route('contacts.index') }}" class="nav-link px-2 link-success">Контакты</a></li>
+            <li><a href="{{ route('about-us.index')  }}" class="nav-link px-2 link-success">О нас</a></li>
+        </ul>
+    </footer>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>
